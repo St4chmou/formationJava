@@ -1,6 +1,6 @@
 package jef;
 
-public class AppareilElectriqueComparable {
+public class AppareilElectriqueComparable implements Comparable<AppareilElectriqueComparable>{
 
 	private boolean enMarche;
 	private int graduation;
@@ -98,6 +98,12 @@ public class AppareilElectriqueComparable {
 	@Override
 	public String toString() {
 		return "AppareilElectrique [marque=" + marque + ", modele=" + modele + ", puissanceMax=" + puissanceMax + "]";
+	}
+
+	@Override
+	public int compareTo(AppareilElectriqueComparable o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

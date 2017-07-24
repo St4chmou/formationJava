@@ -24,6 +24,18 @@ public class CollectionTest {
 
 	private static void search(String toSearch, Collection<String> collection) {
 		// TODO TO IMPLEMENT !
+		long cpt = 0;
+		if (collection != null) {
+
+			cpt = collection.stream()
+					.filter(res -> res.startsWith(toSearch))
+					.count();
+
+			collection.stream()
+			.filter(res -> res.startsWith(toSearch))
+			.forEach(System.out::println);
+		}
+		System.out.println(cpt);
 	}
 
 }

@@ -5,6 +5,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import comparator.AppareilElectriqueComparatorParMarquePuisModelDesc;
+import comparator.AppareilElectriqueComparatorParModelAsc;
+import comparator.AppareilElectriqueComparatorParModelDesc;
+import comparator.AppareilElectriqueComparatorParPuissanceMaxDesc;
+
 public class ComparatorTest {
 
 	private static final List<AppareilElectrique> LISTE_APPAREILS = Arrays.asList(//
@@ -36,21 +41,20 @@ public class ComparatorTest {
 	public static void main(String[] args) {
 
 		// Comparator simple sur un champs
-		// triEtAfficheListe(LISTE_APPAREILS, new
-		// AppareilElectriqueComparatorParModelAsc());
-		// triEtAfficheListe(LISTE_APPAREILS, new
-		// AppareilElectriqueComparatorParModelDesc());
-		// triEtAfficheListe(LISTE_APPAREILS, new
-		// AppareilElectriqueComparatorParPuissanceMaxDesc());
+
+		triEtAfficheListe(LISTE_APPAREILS, new AppareilElectriqueComparatorParModelAsc());
+
+		triEtAfficheListe(LISTE_APPAREILS, new AppareilElectriqueComparatorParModelDesc());
+
+		triEtAfficheListe(LISTE_APPAREILS, new AppareilElectriqueComparatorParPuissanceMaxDesc());
 
 		// Comparator sur 2 champs
-		// triEtAfficheListe(LISTE_APPAREILS, new
-		// AppareilElectriqueComparatorParMarquePuisModelDesc());
+		triEtAfficheListe(LISTE_APPAREILS, new AppareilElectriqueComparatorParMarquePuisModelDesc());
 
 		// Utilisation de Comparable
-		// System.out.println("\n\nTri naturel avec Comparable");
-		// Collections.sort(LISTE_APPAREILS_COMPARABLE);
-		// System.out.println(LISTE_APPAREILS_COMPARABLE);
+		System.out.println("\n\nTri naturel avec Comparable");
+		Collections.sort(LISTE_APPAREILS_COMPARABLE);
+		System.out.println(LISTE_APPAREILS_COMPARABLE);
 
 	}
 
