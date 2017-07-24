@@ -24,7 +24,7 @@ public class radiatorTest {
 
 	public static void testCollectionRadiator() {
 		ArrayList<Radiator> radiators = new ArrayList<Radiator>();
-		System.out.println("Création radiateurs éteint");
+		System.out.println("Création radiateurs éteints");
 		Radiator r1 = new Radiator("test", "modelTest", false, 100);
 		Radiator r2 = new RegulatedRadiator("test", "modelTest", false, 100, 2);
 		radiators.add(r1);

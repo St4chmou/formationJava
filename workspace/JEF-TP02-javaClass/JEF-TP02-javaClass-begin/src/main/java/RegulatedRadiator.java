@@ -10,11 +10,6 @@ public class RegulatedRadiator extends Radiator {
 	}
 
 	public int getConsumption() {
-		int consumption = 0;
-		if (this.isOn()) {
-			consumption = this.getPowerMax()*level/10;
-		}
-		return consumption;
+		return super.getConsumption() * level / 10;
 	}
-
 }
