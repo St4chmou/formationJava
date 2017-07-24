@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd">
+
+
+	<!-- Base de données embarquée -->
+	<jdbc:embedded-database id="dataSource" type="HSQL">
+	</jdbc:embedded-database>
+
+	<!-- Recherche de composants que Spring doit gérer -->
+	<!-- @See https://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-scanning-autodetection -->
+	<context:component-scan base-package="appliance.persistence.dao" />
+
+
+	<!-- Ici se trouve la configuration Hibernate -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		
+		<!-- Pour donner à Hibernate la connexion à la DB -->
+		<property name="dataSource" ref="dataSource" />
+		
+		<!-- Pour indiquer à Hibernate où trouver des @Entity -->
+		<property name="packagesToScan" value="appliance.persistence.model" />
+		
+		<property name="hibernateProperties">
+			<props>
+				
+				<!-- Dialect qu'Hibernate doit utiliser pour créer ses requêtes SQL -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				
+				<!-- Mode de validation/création/destruction de la base de données -->
+				<!-- cf. https://docs.jboss.org/hibernate/orm/5.0/manual/en-US/html/ch03.html#configuration-misc-properties -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				
+				<!-- Paramètres plus particuliers -->
+				<prop key="hibernate.cglib.use_reflection_optimizer">false</prop>
+				<prop key="hibernate.query.substitutions">true 1, false 0, yes 'Y', no 'N'</prop>
+				<prop key="hibernate.connection.isolation">2</prop>
+				<prop key="hibernate.max_fetch_depth">1</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Gestion de transaction par annontations -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans> 

@@ -1,0 +1,1 @@
+CREATE TABLE table_du_script (id BIGINT NOT NULL, nom CHARACTER VARYING(255))

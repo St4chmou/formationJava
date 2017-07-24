@@ -1,0 +1,10 @@
+test-output
+target
+temp
+.classpath
+.clover
+.project
+.settings
+log.log
+/supports/**/~$*.*
+tps

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+		<title>Quiz des formations Sopra Steria</title>
+
+		<link media="screen" rel="stylesheet" type="text/css" href="./ressources/css/reset.css">
+		<link media="screen" rel="stylesheet" type="text/css" href="./ressources/css/slickQuiz.css">
+		<link media="screen" rel="stylesheet" type="text/css" href="./ressources/css/master.css">
+	</head>
+
+	<body>
+		<!-- DOCUMENTATION : https://github.com/jewlofthelotus/SlickQuiz -->
+
+		<!-- THE QUIZ SELECTOR -->
+		<div class="message" style="font-size:14px">
+			<h1 class="quizName">Introduction</h1>
+			Ces deux quizz ont été créés pour donner l'occasion aux stagiaires des formations techniques Java de s'autoévaluer avant de venir à une session de formation, en début de celle-ci et à la fin.
+			<br/><span style="font-weight:bold">Aucun résultat, aucun suivi n'est réalisé/transféré/stocké</span> (d'où le format ZIP en téléchargement libre sur F2F).
+			<br/>Ces quizs n'ont pas vocation à être utilisé pour jauger ou tester les compétences d'un collaborateur du groupe.
+			<br/>
+			<h3>Faire ce quizz avant de s'inscrire à une formation </h3>
+			Le quiz de début de session valide les prérequis de la formation.
+			<br/>L'objectif est donc de faire le point, à la fin du questionnaire, sur les connaissances nécessaire pour suivre la formation.
+			<br/>Si vous n'avez compris que peu de questions/réponses, regarder aux prérequis <a href="http://portal.corp.sopra/sites/campusbyacademy/Accueil/Pages/CalPres.aspx?Dom=Technologies">inscrits sur la fiche de la formation et au support de cours<a>.
+			<br/>Une formation est inutile pour vous si vous n'avez pas les connaissances nécessaires pour la suivre. Et cela pénalisera les autres participants.
+			<br/>
+			<h3>Pour les stagiaires en formation</h3>
+			L'objectif, pour vous, est de répondre aux questions et, une fois terminé, le formateur parcourra les sujets pour préciser des points ou répondre à vos questions.
+			<br/><br/>
+			<h1 class="quizName">Sélection du quiz</h1>
+			<select id="selectQcm" name="qcm"><option/></select>
+			<br/><br/>
+			<a id="startQuiz" class="button" href="#">Sélectionner</a>
+		</div>
+
+		<!-- THE QUIZ DIV -->
+		<div id="slickQuiz">
+			<h1 class="quizName"></h1>
+			<div class="quizArea"><div class="quizHeader"><a class="button startQuiz" href="#">Commencer</a></div></div>
+			<div class="quizResults"><h3 class="quizScore">Votre score : <span></span></h3><h3 class="quizLevel"><strong>Niveau atteint : </strong> <span></span></h3><div class="quizResultsCopy"></div></div>
+		</div>
+
+		<script type="text/javascript" src="./ressources/js/jquery.js"></script>
+		<script type="text/javascript" src="./ressources/js/quizSopraSteria.js"></script>
+
+		<!-- INSERT YOUR QUIZ HERE -->
+		<script type="text/javascript" src="./qcmJavaEtFrameworksDebut.js"></script>
+		<script type="text/javascript" src="./qcmJavaEtFrameworksFin.js"></script>
+		<!-- INSERT YOUR QUIZ HERE -->
+
+		<script type="text/javascript" src="./ressources/js/slickQuiz.js"></script>
+	</body>
+</html>

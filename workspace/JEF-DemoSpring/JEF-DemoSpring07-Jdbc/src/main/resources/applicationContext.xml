@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- Indique à Spring le ou les pckages dans lesquels il trouvera des composants @Component, @Service ou @Repository -->
+	<!-- @See https://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-scanning-autodetection -->
+	<context:component-scan base-package="appliance.persistence.dao" />
+
+	<!-- Chargement du fichier de properties -->
+	<context:property-placeholder location="classpath:datasource.properties"/>
+
+	<!-- Le datasource est maintenant dans le fichier XML et plus dans le code du DAO -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+
+	<!-- Traducteur des messages d'erreurs -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<!-- Gestionnaire de transaction -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Demande à Spring de gérer les transactions par annotation -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans> 

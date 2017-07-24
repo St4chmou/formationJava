@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Paramètres de connexion à la BDD -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql:minibase</property>
+		<property name="hibernate.connection.username">minibase</property>
+		<property name="hibernate.connection.password">minibase</property>
+		
+		<!-- Dialect qu'Hibernate doit utiliser pour créer ses requêtes SQL -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- Mode de validation/création/destruction de la base de données -->
+		<!-- cf. https://docs.jboss.org/hibernate/orm/5.0/manual/en-US/html/ch03.html#configuration-misc-properties -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+
+		<!-- Paramètres plus particuliers -->
+		<property name="connection.pool_size">1</property>
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Liste des classes qu'Hibernate doit persister -->
+		<mapping class="hb.Country" />
+	</session-factory>
+</hibernate-configuration>
+
+ 

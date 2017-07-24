@@ -1,0 +1,11 @@
+*/*/build/
+*/*/bin/
+*/*/target/
+*/target/
+*/*/test-output/
+*/*/.settings/
+*/*/.classpath
+*/*/.project
+*/.settings/
+*/.project
+**/*.log*
