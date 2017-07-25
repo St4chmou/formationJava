@@ -1,5 +1,6 @@
 package jef;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -30,6 +31,20 @@ public class BikeTest {
 		changeObject(myBike);
 		Assert.assertEquals("blue", myBike.getColor());
 
+	}
+	
+	@Test
+	public void testChangeValuePrimitiveString() {
+		Bike myBike = new Bike("red", "VTT");
+		changeValuePrimitiveString(myBike.getColor());
+		Assertions.assertThat(myBike.getColor()).isEqualTo("red");
+	}
+
+	@Test
+	public void testChangeObject() {
+		Bike myBike = new Bike("red", "VTT");
+		changeObject(myBike);
+		Assertions.assertThat(myBike.getColor()).isEqualTo("blue");
 	}
 
 }
